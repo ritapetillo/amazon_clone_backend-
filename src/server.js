@@ -1,6 +1,8 @@
 const express = require("express");
 const server = express();
 const productsRoutes = require("./services/products");
+const reviewsRoutes = require("./services/reviews")
+
 const catRoutes = require("./services/categories");
 
 const {
@@ -27,6 +29,9 @@ server.use(express.static(pathStatic))
 //ROUTES
 //products
 server.use("/products", productsRoutes);
+//reviews
+server.use("/reviews", reviewsRoutes)
+
 server.use("/categories", catRoutes);
 
 
