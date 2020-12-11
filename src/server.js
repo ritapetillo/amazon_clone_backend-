@@ -1,14 +1,14 @@
-
 const express = require("express");
 const server = express();
 const productsRoutes = require("./services/products");
 const {
-    catchAll,
-    unauthorized,
-    forbidden,
-    notFound,
-} = require("./errorHandler")
-const cors = require('cors')
+  catchAll,
+  unauthorized,
+  forbidden,
+  notFound,
+  badRequestHandler,
+} = require("./errorHandler");
+const cors = require("cors");
 const PORT = process.env.PORT || 3001;
 
 //CONFIG
@@ -23,9 +23,10 @@ server.use("/products", productsRoutes);
 
 // Error section (Damn that's fast)
 
-server.use(unauthorized)
-server.use(forbidden)
-server.use(notFound)
-server.use(catchAll)
+server.use(unauthorized);
+server.use(forbidden);
+server.use(notFound);
+server.use(badRequestHandler);
+server.use(catchAll);
 //LISTEN
 server.listen(PORT, () => console.log("server is running on", PORT));
