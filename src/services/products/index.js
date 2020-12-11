@@ -22,6 +22,26 @@ router.get("/", async (req, res, next) => {
 });
 
 //2. GET /products/:id -> get product by ID
+router.get('/:id', async(req,res,next)=>{
+    try{
+        const {id} = req.params;
+        const arrayProducts = await readFileJSON(dbPath)
+        const product = arrayProducts.find(product=>product._id ===id)
+        if (product){
+            res.send(product)
+        } else{
+            //error hendeler
+            const err = new Error()
+            err.httpStatusCode = 404
+            console.log(err)
+            
+        }
+    } catch(err){
+        //error handler
+        console.log(err)
+    }
+})
+
 
 //3. POST /products -> post a product
 
