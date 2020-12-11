@@ -3,6 +3,7 @@ const router = express.Router();
 const { join } = require("path");
 const { writeFileJSON, readFileJSON } = require("../../lib/fsExtra.js");
 const dbPath = join(__dirname, "products.json");
+const uniqid = require('uniqid')
 
 //1. GET /products -> get all products
 router.get("/", async (req, res, next) => {
@@ -49,6 +50,24 @@ router.get('/:id', async(req,res,next)=>{
 
 
 //3. POST /products -> post a product
+router.post('/',async(req,res,next)=>{
+    const newProduct = {
+        ...req.body,
+        cratedAt: Date.now(),
+        updatedAt: Date.now(),
+        _id: uniqid() + uniqid.time()
+    }
+    try{
+        const arrayProducts = await readFileJSON(dbPath)
+        await arrayProducts.push(newProduct)
+        writeFileJSON(dbPath,arrayProducts)
+        res.send(newProduct)
+    } catch(err){
+        //error handler
+        console.log(err)
+    }
+
+})
 
 //4. PUT /products/:id -> edit a product by ID
 
@@ -56,7 +75,7 @@ router.get('/:id', async(req,res,next)=>{
 
 //EXTRA
 //6. GET products/:category -> get all products by category
-router.get('/:category', async(req,res,next)=>{
+router.get('/category/:category', async(req,res,next)=>{
     try{
         const {category} = req.params;
         const arrayProducts = await readFileJSON(dbPath)
