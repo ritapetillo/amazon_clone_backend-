@@ -9,13 +9,18 @@ const {
   badRequestHandler,
 } = require("./errorHandler");
 const cors = require("cors");
+const {join} = require('path')
 const PORT = process.env.PORT || 3001;
+const pathStatic = join(__dirname, "/public");
+
 
 //CONFIG
 //enable cors
 server.use(cors());
 //going to make express able to read the body in json
 server.use(express.json());
+//I tell express which folder to use for static files
+server.use(express.static(pathStatic))
 
 //ROUTES
 //products

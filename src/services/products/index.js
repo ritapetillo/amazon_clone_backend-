@@ -1,11 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const { join } = require("path");
-const { writeFileJSON, readFileJSON } = require("../../lib/fsExtra.js");
+const {
+  writeFileJSON,
+  readFileJSON,
+  writeFileImage,
+} = require("../../lib/fsExtra.js");
 const dbPath = join(__dirname, "products.json");
 const uniqid = require("uniqid");
 const { readJSON } = require("fs-extra");
 const { check, validationResult } = require("express-validator");
+const multer = require("multer");
+const e = require("express");
+const uploadMw = multer();
+const pathImages = join(__dirname, "../../public/products/img");
 
 //1. GET /products -> get all products
 router.get("/", async (req, res, next) => {
@@ -175,7 +183,7 @@ router.delete("/:id", async (req, res, next) => {
     next(err);
   }
 });
-//EXTRA
+
 //6. GET products/:category -> get all products by category
 router.get("/category/:category", async (req, res, next) => {
   try {
@@ -195,6 +203,38 @@ router.get("/category/:category", async (req, res, next) => {
   } catch (err) {
     //error handler
     console.log(err);
+  }
+});
+
+//7.POST products/:id/upload -> get all products by category
+router.post("/:id/upload", uploadMw.single("image"), async (req, res, next) => {
+  const image = req.file.buffer;
+  try {
+    await writeFileImage(
+      join(pathImages, `${req.file.originalname}.jpeg`),
+      req.file.buffer
+    );
+    const arrayProducts = await readJSON(dbPath);
+    const productIndex = arrayProducts.findIndex(
+      (product) => product._id === req.params.id
+    );
+    const product = arrayProducts.find(
+      (product) => product._id === req.params.id
+    );
+
+    if (productIndex >= 0) {
+      product.imageUrl = `${req.file.originalname}.jpeg`;
+      arrayProducts[productIndex] = product;
+      res.send(product);
+    } else {
+      const err = new Error();
+      err.httpStatusCode = 400;
+      next(err);
+    }
+  } catch (err) {
+      console.log(err)
+      next(err);
+      
   }
 });
 
