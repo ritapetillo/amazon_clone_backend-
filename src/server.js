@@ -1,6 +1,8 @@
 const express = require("express");
 const server = express();
 const productsRoutes = require("./services/products");
+const catRoutes = require("./services/categories");
+
 const {
   catchAll,
   unauthorized,
@@ -25,6 +27,8 @@ server.use(express.static(pathStatic))
 //ROUTES
 //products
 server.use("/products", productsRoutes);
+server.use("/categories", catRoutes);
+
 
 // Error section (Damn that's fast)
 
