@@ -1,5 +1,4 @@
 const { writeJSON, readJSON } = require("fs-extra");
-const { join } = require("path");
 
 const readFileJSON = async (filePath) => {
   try {
