@@ -2,6 +2,7 @@
 const express = require("express");
 const server = express();
 const productsRoutes = require("./services/products");
+const reviewsRoutes = require("./services/reviews")
 const {
     catchAll,
     unauthorized,
@@ -20,6 +21,8 @@ server.use(express.json());
 //ROUTES
 //products
 server.use("/products", productsRoutes);
+//reviews
+server.use("/reviews", reviewsRoutes)
 
 // Error section (Damn that's fast)
 
