@@ -8,13 +8,18 @@ const dbPath = join(__dirname, "products.json");
 router.get("/", async (req, res, next) => {
   try {
     let arrayProducts = await readFileJSON(dbPath);
+    if(req.query.category){
+        const {category} = req.query;
+        const products = arrayProducts.filter(product=>product.category === category)
+        res.send(products)
+    } else{
     if (arrayProducts) {
       res.status(200).send(arrayProducts);
     } else {
       //Handle error here
       // let err = new Error();
       console.log("there is an error");
-    }
+    }}
   } catch (err) {
     //Handle error here
     console.log(err);
@@ -50,6 +55,25 @@ router.get('/:id', async(req,res,next)=>{
 //5. DELETE products/:id -> delete a product by ID
 
 //EXTRA
-//6. GET products/:categoryID -> get all products by category
+//6. GET products/:category -> get all products by category
+router.get('/:category', async(req,res,next)=>{
+    try{
+        const {category} = req.params;
+        const arrayProducts = await readFileJSON(dbPath)
+        const product = arrayProducts.filter(product=>product.category ===category)
+        if (product){
+            res.send(product)
+        } else{
+            //error hendeler
+            const err = new Error()
+            err.httpStatusCode = 404
+            console.log(err)
+            
+        }
+    } catch(err){
+        //error handler
+        console.log(err)
+    }
+})
 
 module.exports = router;
