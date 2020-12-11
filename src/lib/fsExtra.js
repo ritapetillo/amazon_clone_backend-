@@ -1,5 +1,4 @@
-const { writeJSON, readJSON } = require("fs-extra");
-
+const { writeJSON, readJSON,writeFile } = require("fs-extra");
 const readFileJSON = async (filePath) => {
   try {
     let file = await readJSON(filePath);
@@ -16,5 +15,11 @@ const writeFileJSON = async (filePath, content) => {
     throw new Error("There was a problem writing the file");
   }
 };
-
-module.exports = {writeFileJSON,readFileJSON}
+const writeFileImage = async (filePath, content) => {
+  try {
+    await writeFile(filePath, content);
+  } catch (err) {
+    throw new Error("There was a problem writing the file");
+  }
+};
+module.exports = { writeFileJSON, readFileJSON, writeFileImage };
