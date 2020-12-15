@@ -1,1 +1,78 @@
-[{"name":"app test 1","description":"somthing longeeer","brand":"nokia","imageUrl":"https://drop.ndtv.com/TECH/product_database/images/2152017124957PM_635_nokia_3310.jpeg?downsize=*:420&output-quality=","price":100,"category":"smartphones","updatedAt":1607686511989,"_id":"1ksaux1ia7kik712zrkik712zs"}]
+[
+  {
+    "name": "app test 1",
+    "description": "somthing longeeer",
+    "brand": "nokia",
+    "imageUrl": "https://drop.ndtv.com/TECH/product_database/images/2152017124957PM_635_nokia_3310.jpeg?downsize=*:420&output-quality=",
+    "price": 100,
+    "category": "smartphones",
+    "updatedAt": 1607686511989,
+    "_id": "1ksaux1ia7kik712zrkik712zs"
+  },
+  {
+    "name": "iPhone",
+    "description": "dfdsfsdf",
+    "brand": "cz",
+    "category": "Smartphones",
+    "imageUrl": "",
+    "price": "42432",
+    "createdAt": 1607701286867,
+    "updatedAt": 1607701286867,
+    "_id": "j5vi61rsdkikfu47okikfu47p"
+  },
+  {
+    "name": "Rita Petillo",
+    "description": "fdgf",
+    "brand": "dfs",
+    "category": "Smartphones",
+    "imageUrl": "",
+    "price": "43",
+    "createdAt": 1607701507533,
+    "updatedAt": 1607701507533,
+    "_id": "5inc1sowkikfyuhakikfyuhb"
+  },
+  {
+    "name": "Rita Petillo",
+    "description": "fdgdfg",
+    "brand": "dfs",
+    "category": "Smartphones",
+    "imageUrl": "IMG_0032.jpg",
+    "price": "3424",
+    "createdAt": 1607701879673,
+    "updatedAt": 1607701879673,
+    "_id": "5inc1sv7kikg6tmikikg6tmj"
+  },
+  {
+    "name": "Rita",
+    "description": "hgfhf",
+    "brand": "cz",
+    "category": "Smartphones",
+    "imageUrl": "IMG_0027.jpg",
+    "price": "42432",
+    "createdAt": 1607701940940,
+    "updatedAt": 1607701940940,
+    "_id": "5inc1sxikikg84wdkikg84we"
+  },
+  {
+    "name": "Rita Petillo",
+    "description": "rewewr",
+    "brand": "dfs",
+    "category": "Smartphones",
+    "imageUrl": "IMG_0032.jpg",
+    "price": "534534",
+    "createdAt": 1607701992565,
+    "updatedAt": 1607701992565,
+    "_id": "5inc1sy4kikg98qekikg98qf"
+  },
+  {
+    "name": "Rita Petillo",
+    "description": "fdgd",
+    "brand": "cz",
+    "category": "Smartphones",
+    "imageUrl": "IMG_0033.jpg",
+    "price": "2",
+    "createdAt": 1607702078619,
+    "updatedAt": 1607702078619,
+    "_id": "5inc1sytkikgb34tkikgb34u"
+  }
+]

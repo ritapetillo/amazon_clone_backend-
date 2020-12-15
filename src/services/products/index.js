@@ -88,7 +88,7 @@ router.post(
   async (req, res, next) => {
     const newProduct = {
       ...req.body,
-      cratedAt: Date.now(),
+      createdAt: Date.now(),
       updatedAt: Date.now(),
       _id: uniqid() + uniqid.time(),
     };
